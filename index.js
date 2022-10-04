@@ -20,16 +20,27 @@
 // app.listen(3001);
 
 //Example 3 : Using Multiple methods
-var express = require("express");
-var app = express();
+// var express = require("express");
+// var app = express();
 
 // app.get("/hello", function (req, res) {
 //   res.send("Hello World!");
 // });
 //For posting purpose I have to write in the terminal this command:
 //curl -X POST "http://localhost:3000/hello"
-app.post("/hello", function (req, res) {
-  res.send("You just called the post method at '/hello'!\n");
+// app.post("/hello", function (req, res) {
+//   res.send("You just called the post method at '/hello'!\n");
+// });
+
+// app.listen(3001);
+
+//Example 4 A special method, all, is provided by Express to handle all types of http methods at a particular route using the same function
+
+var express = require("express");
+var app = express();
+
+app.all("/test", function (req, res) {
+  res.send("HTTP method doesn't have any effect on this route!");
 });
 
 app.listen(3001);
