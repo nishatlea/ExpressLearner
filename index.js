@@ -47,12 +47,44 @@
 
 //Example 6 Using Express.Router
 
+// var express = require("express");
+// var app = express();
+
+// var things = require("./things.js");
+
+// //both index.js and things.js should be in same directory
+// app.use("/things", things);
+
+// app.listen(3000);
+
+//Example 7 Using Dynamic Routes
+// var express = require("express");
+// var app = express();
+
+// app.get("/:id", function (req, res) {
+//   res.send("The id you specified is " + req.params.id);
+// });
+// app.listen(3000);
+
+//Example 8 Complex Dynamic Routes
+// var express = require("express");
+// var app = express();
+
+// app.get("/things/:name/:id", function (req, res) {
+//   res.send("id: " + req.params.id + " and name: " + req.params.name);
+// });
+// app.listen(3000);
+
+//Example 9 Pattern Matched Routes
 var express = require("express");
 var app = express();
 
-var things = require("./things.js");
+app.get("/things/:id([0-9]{5})", function (req, res) {
+  res.send("id: " + req.params.id);
+});
 
-//both index.js and things.js should be in same directory
-app.use("/things", things);
+app.get("*", function (req, res) {
+  res.send("Sorry, this is an invalid URL.");
+});
 
 app.listen(3000);
