@@ -121,16 +121,24 @@ app.get("/", function (req, res, next) {
   next();
 });
 
+var cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 app.use("/", function (req, res) {
   console.log("End");
 });
 
 app.listen(3000);
 
-var bodyParser = require("body-parser");
+// Example 12 body-parser to parse the body of requests which have payloads attached to them
 
-//To parse URL encoded data
-app.use(bodyParser.urlencoded({ extended: false }));
+// var bodyParser = require("body-parser");
 
-//To parse json data
-app.use(bodyParser.json());
+// //To parse URL encoded data
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+// //To parse json data
+// app.use(bodyParser.json());
+
+var cookieParser = require("cookie-parser");
+app.use(cookieParser());
