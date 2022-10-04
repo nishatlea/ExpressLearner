@@ -76,15 +76,61 @@
 // app.listen(3000);
 
 //Example 9 Pattern Matched Routes
+// var express = require("express");
+// var app = express();
+
+// app.get("/things/:id([0-9]{5})", function (req, res) {
+//   res.send("id: " + req.params.id);
+// });
+
+// app.get("*", function (req, res) {
+//   res.send("Sorry, this is an invalid URL.");
+// });
+
+// app.listen(3000);
+
+//Example 10 Middleware
+// var express = require("express");
+// var app = express();
+
+// //Simple request time logger
+// app.use(function (req, res, next) {
+//   console.log("A new request received at " + Date.now());
+
+//   //This function call is very important. It tells that more processing is
+//   //required for the current request and is in the next middleware function route handler.
+//   next();
+// });
+
+// app.listen(3000);
+
+//Example 11 Order of Middleware Calls
+
 var express = require("express");
 var app = express();
 
-app.get("/things/:id([0-9]{5})", function (req, res) {
-  res.send("id: " + req.params.id);
+//First middleware before response is sent
+app.use(function (req, res, next) {
+  console.log("Start");
+  next();
 });
 
-app.get("*", function (req, res) {
-  res.send("Sorry, this is an invalid URL.");
+//Route handler
+app.get("/", function (req, res, next) {
+  res.send("Middle");
+  next();
+});
+
+app.use("/", function (req, res) {
+  console.log("End");
 });
 
 app.listen(3000);
+
+var bodyParser = require("body-parser");
+
+//To parse URL encoded data
+app.use(bodyParser.urlencoded({ extended: false }));
+
+//To parse json data
+app.use(bodyParser.json());
