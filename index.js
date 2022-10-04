@@ -106,29 +106,26 @@
 
 //Example 11 Order of Middleware Calls
 
-var express = require("express");
-var app = express();
+// var express = require("express");
+// var app = express();
 
-//First middleware before response is sent
-app.use(function (req, res, next) {
-  console.log("Start");
-  next();
-});
+// //First middleware before response is sent
+// app.use(function (req, res, next) {
+//   console.log("Start");
+//   next();
+// });
 
-//Route handler
-app.get("/", function (req, res, next) {
-  res.send("Middle");
-  next();
-});
+// //Route handler
+// app.get("/", function (req, res, next) {
+//   res.send("Middle");
+//   next();
+// });
 
-var cookieParser = require("cookie-parser");
-app.use(cookieParser());
+// app.use("/", function (req, res) {
+//   console.log("End");
+// });
 
-app.use("/", function (req, res) {
-  console.log("End");
-});
-
-app.listen(3000);
+// app.listen(3000);
 
 // Example 12 body-parser to parse the body of requests which have payloads attached to them
 
@@ -140,5 +137,17 @@ app.listen(3000);
 // //To parse json data
 // app.use(bodyParser.json());
 
-var cookieParser = require("cookie-parser");
-app.use(cookieParser());
+//Example 13 cookie-parser
+// var cookieParser = require("cookie-parser");
+// app.use(cookieParser());
+
+//Example 14 PUG
+var express = require("express");
+var app = express();
+app.set("view engine", "pug");
+app.set("views", "./views");
+
+app.get("/first_template", function (req, res) {
+  res.render("first_view");
+});
+app.listen(3000);
