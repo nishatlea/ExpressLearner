@@ -9,6 +9,21 @@ var movies = [
 
 //Routes will go here
 module.exports = router;
-router.get("/", function (req, res) {
-  res.json(movies);
+// router to get all the movies
+// router.get("/", function (req, res) {
+//   res.json(movies);
+// });
+
+router.get("/:id([0-9]{3,})", function (req, res) {
+  var currMovie = movies.filter(function (movie) {
+    if (movie.id == req.params.id) {
+      return true;
+    }
+  });
+  if (currMovie.length == 1) {
+    res.json(currMovie[0]);
+  } else {
+    res.status(404); //Set status to 404 as movie was not found
+    res.json({ message: "Not Found" });
+  }
 });
