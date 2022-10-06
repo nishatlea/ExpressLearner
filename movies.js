@@ -10,9 +10,9 @@ var movies = [
 //Routes will go here
 module.exports = router;
 // router to get all the movies
-// router.get("/", function (req, res) {
-//   res.json(movies);
-// });
+router.get("/", function (req, res) {
+  res.json(movies);
+});
 
 //route to get a specific movie by its id.
 // router.get("/:id([0-9]{3,})", function (req, res) {
