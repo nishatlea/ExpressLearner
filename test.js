@@ -55,6 +55,10 @@ const User = sequelize.define(
 // `sequelize.define` also returns the model
 console.log(User === sequelize.models.User); // true
 
+var express = require("express");
+var router = express.Router();
+module.exports = router;
+
 // Create a new user
 //const jane = User.create({ firstName: "Jane", lastName: "Doe" });
 //console.log("Jane's auto-generated ID:", jane.id);
@@ -66,6 +70,10 @@ async function DataVal() {
   //await console.log(users.firstName);
   console.log(users.every((user) => user instanceof User)); // true
   console.log("All users:", JSON.stringify(users, null, 2));
+
+  router.get("/", function (req, res) {
+    res.json(users);
+  });
 }
 
 DataVal();

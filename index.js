@@ -169,9 +169,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.array());
 
 //Require the Router we defined in movies.js
-var movies = require("./movies.js");
+var userlist = require("./test.js");
 
 //Use the Router on the sub route /movies
-app.use("/movies", movies);
+app.use("/test", userlist);
 
 app.listen(3005);
