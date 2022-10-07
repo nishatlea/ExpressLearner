@@ -154,24 +154,48 @@
 
 //Example 15 Restful APIS
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var cookieParser = require("cookie-parser");
-//Multer is a node. js middleware for handling multipart/form-data , which is primarily used for uploading files.
-var multer = require("multer");
-var upload = multer();
+// var express = require("express");
+// var bodyParser = require("body-parser");
+// var cookieParser = require("cookie-parser");
+// //Multer is a node. js middleware for handling multipart/form-data , which is primarily used for uploading files.
+// var multer = require("multer");
+// var upload = multer();
 
-var app = express();
+// var app = express();
 
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array());
+// app.use(cookieParser());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(upload.array());
 
-//Require the Router we defined in movies.js
-var userlist = require("./test.js");
+// //Require the Router we defined in movies.js
+// var movies = require("./movies.js");
 
-//Use the Router on the sub route /movies
-app.use("/test", userlist);
+// //Use the Router on the sub route /movies
+// app.use("/movies", movies);
 
-app.listen(3005);
+// app.listen(3005);
+
+//Example 16 User api creation using sequelize
+
+// var express = require("express");
+// var bodyParser = require("body-parser");
+// var cookieParser = require("cookie-parser");
+// //Multer is a node. js middleware for handling multipart/form-data , which is primarily used for uploading files.
+// var multer = require("multer");
+// var upload = multer();
+
+// var app = express();
+
+// app.use(cookieParser());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(upload.array());
+
+// //Require the Router we defined in movies.js
+// var userlist = require("./test.js");
+
+// //Use the Router on the sub route /movies
+// app.use("/test", userlist);
+
+// app.listen(3005);
